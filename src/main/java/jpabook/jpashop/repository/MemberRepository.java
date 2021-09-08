@@ -13,11 +13,13 @@ import java.util.List;
 @Repository //스프링 빈으로 등록
 public class MemberRepository {
     
-    @PersistenceContext // jpa EntityManager 스프링이 자동 주입
+    @PersistenceContext // EntityManagerFactory 따로 안만들어줘도 이 어노테이션만으로 스프링이 자동 주입
     private EntityManager em;
 
+    //==회원저장==//
     public void save(Member member) { em.persist(member); }
 
+    //==조회==//
     public Member findOne(long id) {
         return em.find(Member.class,id);
     }

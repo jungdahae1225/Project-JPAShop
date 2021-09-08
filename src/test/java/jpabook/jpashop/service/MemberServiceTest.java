@@ -17,15 +17,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class) //강의에서 junit4 기준으로 설명 => 나는 junit5를 쓸 것임.
 @SpringBootTest
-@Transactional
-class MemberServiceTest {
+public class MemberServiceTest {
 
     @Autowired MemberService memberService;
     @Autowired MemberRepository memberRepository;
     @Autowired EntityManager em;
 
     @Test
-    @Rollback(value = false)
+    @Transactional
+    @Rollback(value = false) // test코드에서도 롤백으로 쿼리 안날리고 그냥 실행하도록 하는 것.
     public void 회원가입() throws Exception {
         //given 이러한 상황이 주어졌을 떄
         Member member = new Member();

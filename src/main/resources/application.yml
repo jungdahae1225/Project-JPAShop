@@ -16,4 +16,4 @@ spring:
 logging:
   level:
     org.hibernate.SQL: debug
-    org.hibernate.type: trace #SQL 실행 파라미터를 로그로 남긴다.#
+    #org.hibernate.type: trace #SQL 실행 파라미터를 로그로 남긴다.#
