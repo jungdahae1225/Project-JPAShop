@@ -13,6 +13,7 @@ public class Delivery {
     @Column(name="order_item_id")
     private Long id;
 
+    //==Order를 연관관계 주인으로 설정했다.==//
     @OneToOne(mappedBy = "delivery",fetch = FetchType.LAZY)
     private Order order;
 

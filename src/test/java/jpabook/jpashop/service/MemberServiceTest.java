@@ -17,15 +17,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class) //강의에서 junit4 기준으로 설명 => 나는 junit5를 쓸 것임.
 @SpringBootTest
+@Transactional // "test코드"에 넣어주면 쿼리들을 롤백해서 커밋을 하지 않아 DB에 적용 되지 않음 (EntityManager가 flush를 하지 않음.) cf)실제 돌리는 곳에서는 롤백하지 않음.
 public class MemberServiceTest {
 
     @Autowired MemberService memberService;
     @Autowired MemberRepository memberRepository;
-    @Autowired EntityManager em;
+   //@Autowired EntityManager em;
 
     @Test
-    @Transactional
-    @Rollback(value = false) // test코드에서도 롤백으로 쿼리 안날리고 그냥 실행하도록 하는 것.
+    //@Rollback(value = false) // test코드에서도 롤백 안하고 커밋 하게 하는 코드.
     public void 회원가입() throws Exception {
         //given 이러한 상황이 주어졌을 떄
         Member member = new Member();
@@ -35,7 +35,7 @@ public class MemberServiceTest {
         Long savedId = memberService.join(member);
 
         //then 결과가 이렇게 나와야 한다.
-        em.flush(); //DB에 강제로 쿼리 날리기 위함
+        //em.flush(); //DB에 강제로 쿼리 날리기 위함
         Assert.assertEquals(member,memberRepository.findOne(savedId));
     }
 

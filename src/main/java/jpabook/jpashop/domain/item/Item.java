@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE) // 개발 의도에 맞는 회원 테이블 전략을 추상클래스에 설정해주기
-@DiscriminatorColumn(name = "dtype")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE) // 개발 의도에 맞는 상속관계 테이블 전략을 추상클래스에 설정해주기
+@DiscriminatorColumn(name = "dtype") //자식 클래스 @DiscriminatorValue와 연결되어 자식 클래스 타입이 뭘로 표시될지 정해주는 것.
 @Getter @Setter
 public abstract class Item { //구현체를 가지고 갈거임
     @Id
