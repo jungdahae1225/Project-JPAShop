@@ -26,7 +26,7 @@ public abstract class Item { //구현체를 가지고 갈거임
     @ManyToMany(mappedBy = "items")
     private List<Category> categories = new ArrayList<>();
     
-    //==비지니스 로직==//
+    //==비지니스 로직 - 해당 엔티티가 해결해야 하는 비지니스 로직은 객체지향적으로 해당 엔티티에 로직을 추가해준다.==//
     //=>Setter로 값 변경 하지 말고 메서드를 만드는 방법으로 수정해라.
     /***
      * stock 증가
@@ -40,7 +40,7 @@ public abstract class Item { //구현체를 가지고 갈거임
      */
     public void removeStock(int quantity) {
         int restStock = this.stockQuantity - quantity;
-        if(restStock < 0) {
+        if(restStock < 0) { // 재고가 부족하다면
             throw new NotEnoughStockException("need more stock");
         }
         this.stockQuantity -= restStock;
