@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -22,7 +23,7 @@ public class MemberController {
         return "members/createMemberForm";
     }
     @PostMapping(value = "/members/new")
-    public String create(@Valid MemberForm form, BindingResult result) {
+    public String create(@Valid MemberForm form, BindingResult result) { //BindingResult result -> 오류가 있으면 원래 에러 코드들이 뜨지만, 이건 스프링에서 result에 오류를 담아 아래 코드 실행 하게 됨.
         if (result.hasErrors()) {
             return "members/createMemberForm";
         }
@@ -32,6 +33,13 @@ public class MemberController {
         member.setName(form.getName());
         member.setAddress(address);
         memberService.join(member);
-        return "redirect:/";
+        return "redirect:/"; //저장 성공하면 홈으로 돌아가기.
+    }
+
+    @GetMapping(value = "/members")
+    public String list(Model model) {
+        List<Member> members = memberService.findMembers(); //모든 멤버 조회
+        model.addAttribute("members", members); //조회 한 거를 모델에 담아서
+        return "members/memberList"; //화면에 넘긴다.
     }
 }
