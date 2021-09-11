@@ -21,10 +21,12 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-devtools'//개발 편의 기능 다수수록: ex)수정 후 서버 재실행 필요 없게 해줌. (수정 파일만 재빌드 해주면 됨)
 
     implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.6' //외부라이브러리 -- 개발 단계에서 편의를 도와줌. ==> 운영에서는 성능 저하 여부를 확인 후 쓸 것!!
+
     implementation 'junit:junit:4.13.1'
 
     compileOnly 'org.projectlombok:lombok'

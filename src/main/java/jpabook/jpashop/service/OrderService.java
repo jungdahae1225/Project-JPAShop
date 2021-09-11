@@ -21,9 +21,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrderService {
 
-    @PersistenceContext private final OrderRepository orderRepository;
-    @PersistenceContext private final MemberRepository memberRepository;
-    @PersistenceContext private final ItemRepository itemRepository;
+    //@PersistenceContext
+    private final OrderRepository orderRepository;
+    //@PersistenceContext
+    private final MemberRepository memberRepository;
+    //@PersistenceContext
+    private final ItemRepository itemRepository;
 
     //==주문하기==//
     @Transactional
