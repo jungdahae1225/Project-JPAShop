@@ -40,7 +40,7 @@ import static java.util.stream.Collectors.toList;
 public class OrderSimpleApiController {
 
     private final OrderRepository orderRepository;
-    private final OrderSimpleQueryRepository orderSimpleQueryRepository; //의존관계주입
+    private final OrderSimpleQueryRepository orderSimpleQueryRepository; //V4를 위함
 
     /**
      * V1. 엔티티 직접 노출 (N:1의 경우)
